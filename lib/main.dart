@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:flutter/material.dart';
 
 
 void main() {
@@ -35,21 +35,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
   bool ePatrat(int numar)
   {
-    num squareRoot = sqrt(numar);
+    final double squareRoot = sqrt(numar);
     return squareRoot.toInt() == squareRoot;
   }
 
   bool eCub(int numar)
   {
-    num cubeRoot = pow(numar, 1 / 3);
+    final num cubeRoot = pow(numar, 1 / 3);
     // return cubeRoot.toInt() == cubeRoot;
     
-    int roundedCubeRoot = cubeRoot.round();
+    final int roundedCubeRoot = cubeRoot.round();
 
     return roundedCubeRoot * roundedCubeRoot * roundedCubeRoot == numar;
   }
   
-  final _textController = TextEditingController();
+  final TextEditingController _textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -61,13 +61,11 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(15.0),
         child: Center(
           child: Column(
-            
-            mainAxisAlignment: MainAxisAlignment.start,
       
             children: <Widget>[
       
               const Text(
-                "Please input a number to see if it is square or triangular.",
+                'Please input a number to see if it is square or triangular.',
                 style: TextStyle(
                   fontSize: 20,
                 )
@@ -75,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
       
               TextField(
                 controller: _textController,
-                keyboardType: const TextInputType.numberWithOptions(),
+                keyboardType: const TextInputType.numberWithOptions(decimal: true),
               ),
       
             ],
@@ -84,17 +82,17 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          int inputNumber = int.parse(_textController.text);
+          final int inputNumber = int.parse(_textController.text);
           String message = '';
 
           if (ePatrat(inputNumber) && eCub(inputNumber)) {
-            message = "Number $inputNumber is both SQUARE and TRIANGULAR.";
+            message = 'Number $inputNumber is both SQUARE and TRIANGULAR.';
           } else if (ePatrat(inputNumber) && !eCub(inputNumber)) {
-            message = "Number $inputNumber is SQUARE.";
+            message = 'Number $inputNumber is SQUARE.';
           } else if (!ePatrat(inputNumber) && eCub(inputNumber)) {
-            message = "Number $inputNumber is TRIANGULAR.";
+            message = 'Number $inputNumber is TRIANGULAR.';
           } else if (!ePatrat(inputNumber) && !eCub(inputNumber)) {
-            message = "Number $inputNumber is neither SQUARE or TRIANGULAR.";
+            message = 'Number $inputNumber is neither SQUARE or TRIANGULAR.';
           }
 
           showDialog(

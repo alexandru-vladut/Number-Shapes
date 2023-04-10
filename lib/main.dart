@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -32,23 +31,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-  bool ePatrat(int numar)
-  {
+  bool ePatrat(int numar) {
     final double squareRoot = sqrt(numar);
     return squareRoot.toInt() == squareRoot;
   }
 
-  bool eCub(int numar)
-  {
+  bool eCub(int numar) {
     final num cubeRoot = pow(numar, 1 / 3);
     // return cubeRoot.toInt() == cubeRoot;
-    
+
     final int roundedCubeRoot = cubeRoot.round();
 
     return roundedCubeRoot * roundedCubeRoot * roundedCubeRoot == numar;
   }
-  
+
   final TextEditingController _textController = TextEditingController();
 
   @override
@@ -61,21 +57,15 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(15.0),
         child: Center(
           child: Column(
-      
             children: <Widget>[
-      
-              const Text(
-                'Please input a number to see if it is square or triangular.',
-                style: TextStyle(
-                  fontSize: 20,
-                )
-              ),
-      
+              const Text('Please input a number to see if it is square or triangular.',
+                  style: TextStyle(
+                    fontSize: 20,
+                  )),
               TextField(
                 controller: _textController,
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
               ),
-      
             ],
           ),
         ),
